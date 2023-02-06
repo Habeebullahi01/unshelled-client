@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+import { Link } from "react-router-dom";
 
 function App() {
+  // const [auth, setAuth] = useState({ username: null, password: null });
+  const { auth } = useContext(AuthContext);
+  useEffect(() => {
+    if (auth === null) {
+      console.log("Auth is null");
+    } else {
+      console.log("Auth is not null");
+    }
+  }, [auth]);
   return (
+    // <AuthContextProvider>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Unshelled</h1>
+      <Link to={"/order"}>Go to order page</Link>
     </div>
+    // </AuthContextProvider>
   );
 }
 
